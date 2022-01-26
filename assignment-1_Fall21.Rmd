@@ -1,0 +1,263 @@
+---
+title: 'CIND 123 - Data Analytics: Basic Methods'
+author: 
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+<center> <h1> Assignment 1 (10%) </h1> </center>
+<center>  <h3> [Alyzeh Jiwani] </h2> </center>
+<center> <h3> [D20 501106857] </h2> </center>
+---
+## Instructions 
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. Review this website for more details on using R Markdown <http://rmarkdown.rstudio.com>.
+
+Use RStudio for this assignment. Complete the assignment by inserting your R code wherever you see the string "#INSERT YOUR ANSWER HERE".
+
+When you click the **Knit** button, a document (PDF, Word, or HTML format) will be generated that includes both the assignment content as well as the output of any embedded R code chunks.
+
+Submit **both**  the rmd and generated output files. Failing to submit both files will be subject to mark deduction.
+
+## Sample Question and Solution
+
+Use `seq()` to create the vector $(1,2,3,\ldots,10)$.
+
+```{r}
+seq(1,10)
+```
+
+```{r}
+library(tidyverse)
+```
+
+## Question 1
+
+a) Create and print a vector `x` with all integers 1-100, and a vector `y` with every fifth integer in the same range. What is the difference in lengths of the vectors `x` and `y`?. (8 points)
+Hint: use `seq()`function, every fifth element of "y" will be like [1,6,11,.....].
+
+```{r}
+x <- seq(1,100)
+y <- seq(1,100,5)
+print("The vector x is:")
+(x)
+print("The vector y is:")
+(y)
+print("The difference between the legths of x and y is")
+(length(x)-length(y))
+```
+
+b) Create a new vector, "x_square", with the square of elements at indices 3, 6, 7, 10, 15, 22, 23, 24, and 30 from the variable "x". 
+Hint: Use indexing rather than a for loop. Calculate the mean and median of the last five values from x_square.
+
+```{r}
+(x_square <- c(x[3]^2, x[6]^2, x[7]^2, x[10]^2, x[15]^2, x[22]^2, x[23]^2, x[24]^2, x[30]^2))
+(mean(x_square[-4:-1]))
+(median(x_square[5:9]))
+
+```
+
+c) Would it be correct to use the following commands to convert a factor variable to a numeric variable? Explain your answer.
+
+`factorVar <- factor(c(1, 6, 5.4, 3.2));as.numeric(factorVar)`
+
+```{r}
+#It would not be correct as as.numeric() 
+#will convert the individual factor levels of 
+#the factor variable to numeric values if they werent
+#already numeric, hoever they will still 
+#remain as factor levels.
+```
+
+d) Assume that you would read a comma-separated file `dataset.csv` consists of missing values represented by question marks (`?`) and exclamation mark (`!`). How can you read this type of files in R (please include your code in the answer section)?
+
+```{r}
+#When importing the csv i would use the read.csv()
+#function and set na.strings option to switch any strings
+#that match ? or ! to the logical value NA 
+#(i.e. c("?", "!"))
+```
+
+\newpage
+## Question 2
+
+a) Compute: $$\sum_{n=1}^{100}\frac{2^{n}}{(n-1)!}$$
+
+```{r}
+dummy_vec <- seq(1:100)
+for(i in 1:100) {
+  num <- 2^i
+  den <- factorial(i-1)
+  dummy_vec[i] <- num/den
+}
+(sum(dummy_vec))
+```
+
+b) Compute: $$\sum_{n=1}^{10}\left(\frac{2^{n}}{n^2} + \frac{n^{4}}{4^{n}}\right)$$
+
+```{r}
+dv1 <- seq(1,10)
+dv2 <- seq(1,10)
+for (i in 1:10){
+  n1 <- 2^i
+  d1 <- i^2
+  n2 <- i^4
+  d2 <- 4^i
+  dv1[i] <- n1/d1
+  dv2[i] <- n2/d2
+  
+}
+(sum(dv1+dv2))
+
+```
+
+c) Compute: $$\sum_{n=0}^{10} \frac{1}{(n+1)!}$$ (Hint: Use `factorial(n)` to compute $n!$)
+
+```{r}
+d_vec <- seq(0:10)
+for(i in 0:10){
+  d_vec[i] <- 1/factorial(i+1)
+}
+(sum(d_vec))
+```
+
+d) Compute: $$\prod_{n=3}^{33} \left(3n + \frac{3}{\sqrt[3]{n}}\right)$$
+
+```{r}
+dummy_v <- seq(3,33)
+for(i in 3:33){
+  a <- 3*i
+  b <- 3/(i^(1/3))
+  dummy_v[i-2] <- a+b
+}
+(dummy_v)
+for(i in 4:33){
+  dummy_v[i-2] <- dummy_v[i-3]*dummy_v[i-2]
+}
+(dummy_v)
+(dummy_v[31])
+```
+
+e) Explain the output of this R-command:
+`c(0:5)[NA]`
+
+```{r}
+#the output of this r command is NA NA NA NA NA NA
+#this is because the square brackets are used to find
+#subsets corresponding to thindex inside the brackets
+#if the index of the subset we want to select is NA 
+#(not available) then for each element in the vector
+#c(0:5) its representative in the subset [NA] 
+#will also be unavailable.
+```
+
+f) What is the difference between is.vector() and is.numeric() functions?
+
+```{r}
+#is.vector() checkes to see whether an object in 
+#r is a vector. is.numeric() takes in a vector as input
+#and checks to see if that vector is of numeric class.
+```
+
+g) There are lost of packages in R. `RShiny` is one of it (https://shiny.rstudio.com/). Please investigate this package and list at least three advantages and three disadvantages of using `RShiny` package?
+```{r}
+#helps us build web applications without having to know 
+#any html, css or javascript knowledge
+#its free
+#its compatible with R, and highly cusomisable/extensible
+```
+
+\newpage
+## Question 3
+`iris` dataset gives the measurements in centimeters of the variables sepal length, sepal width, petal length and petal width, respectively, for 50 flowers from each of 3 species of iris. The species are Iris setosa, versicolor, and virginica.
+
+Install the `iris` dataset on your computer using the command `install.packages("datasets")`. Then, load the `datasets` package into your session using the following command.
+```{r}
+library(datasets)
+```
+
+a) Display the first ten rows of the `iris` data set.
+
+```{r}
+head(iris, 10)
+```
+
+b) Compute the average of the first four variables (Sepal.Length, Sepal.Width, Petal.Length and Petal.Width) using `sapply()` function.
+
+Hint: You might need to consider removing the `NA` values, otherwise the average will not be computed.
+
+```{r}
+sapply(iris[c('Sepal.Length', 'Sepal.Width', 'Petal.Length', 'Petal.Width')], mean)
+
+m_count <- sum(is.na(iris))
+if(("NA"%in% iris)|
+   ("na"%in% iris) | (""%in% iris)|(NA %in% iris) ){
+  print("True")
+  m_count<- m_count +1
+}
+str_c("There are ", m_count, " missing values")
+
+```
+
+c) Show how to use R to replace the missing values in this dataset with plausible ones.
+
+```{r}
+#first when we read in the csv file we replace any
+#variants of NA with the logical value NA 
+#(As shown above).
+#when using variables or instances in the data set in
+#functions or as part of calculations we can use
+#na.omit() to omit the missing values from our calculations.
+#depending on how frequently NA values appear in certain
+#variables, and how useful those variables are to our
+#analysis we can remove those variables entirely  
+# likewise, if certain variables our vital to our
+#analysis, we can even consider removing entires
+#instances where these variables have a NA value, or if
+#these instances have a high occurence of NA values.
+```
+
+d) Compute the standard deviation for only the first and the third variables (Sepal.Length and Petal.Length)
+
+```{r}
+sapply(iris[c('Sepal.Length', 'Petal.Length')], sd)
+```
+
+e) Construct a boxplot for `Sepal.Width` variable, then display the values of all the outliers. Explain how these outliers have been calculated.
+
+```{r}
+summary(iris["Sepal.Width"])
+str(iris)
+sw_box <- boxplot(iris$Sepal.Width)
+sw_box$out # this gives us the outliers of sepal.width; 4.4 4.1 4.2 2.0
+#how have these been calculated? explain
+```
+
+f) Compute the upper quartile of the `Sepal.Width` variable with two different methods.
+
+```{r}
+sw_box$stats[4,] #give us the upper quartile
+
+```
+
+g) Construct a pie chart to describe the species with 'Sepal.Length' less than 7 centimeters.
+```{r}
+species_counts <- c(0,0,0)
+for (row in 1:nrow(iris)){
+  if ((iris[row, "Species"] == "setosa") & (iris[row, "Sepal.Length"]< 7)){
+    species_counts[1] <- species_counts[1] +1
+  }
+  if((iris[row, "Species"] == "versicolor") & (iris[row, "Sepal.Length"]< 7)){
+    species_counts[2] <- species_counts[2] +1
+  }
+  if((iris[row, "Species"] == "virginica") & (iris[row, "Sepal.Length"]< 7)){
+    species_counts[3] <- species_counts[3] +1
+  }}
+species_counts
+pie(species_counts, labels = c("setosa","versicolor", "virginica" ))
+
+
+```
+
+END of Assignment #1.

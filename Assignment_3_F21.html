@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="fluid-row">
+
+
+
+<h1 class="title toc-ignore">CIND 123 - Data Analytics: Basic Methods Fall 2021 Assignment 3</h1>
+
+</div>
+
+
+<center>
+<h1>
+Assignment 3 (10%)
+</h1>
+</center>
+<center>
+<h3>
+[Insert your full name]
+
+</h3></center>
+<center>
+<h3>
+[Insert course section &amp; student number]
+
+</h3></center>
+<hr/>
+<div class="section level2">
+<h2>Instructions</h2>
+<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. Review this website for more details on using R Markdown <a rel="noopener" href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
+<p>Use RStudio for this assignment. Complete the assignment by inserting your R code wherever you see the string “#INSERT YOUR ANSWER HERE”.</p>
+<p>When you click the <strong>Knit</strong> button, a document (PDF, Word, or HTML format) will be generated that includes both the assignment content as well as the output of any embedded R code chunks.</p>
+<p>Submit <strong>both</strong> the rmd and generated output files. Failing to submit both files will be subject to mark deduction.</p>
+</div>
+<div class="section level2">
+<h2>Sample Question and Solution</h2>
+<p>Use <code>seq()</code> to create the vector <span class="math inline">\((2,4,6,\ldots,20)\)</span>.</p>
+<pre class="r"><code>#Insert your code here.
+seq(2,20,by = 2)</code></pre>
+<pre><code>##  [1]  2  4  6  8 10 12 14 16 18 20</code></pre>
+<div class="section level3">
+<h3>Note:</h3>
+<p>You will use ‘Admission_Predict.csv’ for Assignment-3. This dataset includes the data of the applicants of an academic program. Each application has a unique serial number, which represents a particular student. The dataset contains several parameters which are considered important during the application for Masters Programs. The parameters included are :</p>
+<ol style="list-style-type: decimal;">
+<li><p>GRE Scores (out of 340)</p></li>
+<li><p>TOEFL Scores (out of 120)</p></li>
+<li><p>University Rating (out of 5)</p></li>
+<li><p>Statement of Purpose (SOP) (out of 5)</p></li>
+<li><p>Letter of Recommendation (LOR) Strength (out of 5)</p></li>
+<li><p>Undergraduate GPA (out of 10)</p></li>
+<li><p>Research Experience (either 0 or 1)</p></li>
+<li><p>Chance of Admit (ranging from 0 to 1)</p></li>
+</ol>
+<p><strong>Download “Admission_Predict.csv” dataset and load it as ‘data’.</strong></p>
+<pre class="r"><code>#Insert your code here.</code></pre>
+</div>
+</div>
+<div class="section level2">
+<h2>Question 1 (30 points in total)</h2>
+<ol style="list-style-type: lower-alpha;">
+<li>i- Display the first three rows in this dataset.(1 point)</li>
+</ol>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<p>ii - Display the structure of all variables.(1 point)</p>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<p>iii - Print the descriptive statistics of the admission data to understand the data a little better (min, max, mean, median, 1st and 3rd quartiles). (1 point)</p>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<p>iv - Use a histogram to assess the normality of the ‘Chance.of.Admit’ variable and explain whether it appears normally distributed or not and why? (1 point)</p>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<ol start="2" style="list-style-type: lower-alpha;">
+<li>Create a set of boxplots that shows the distribution of Chance.of.Admit on SOP variables. Use different colors for different SOP score marks. Hint: SOP scores are changing between 1,1.5, to 5, therefore you can use different box colours for each score likewise; 1 (red), 1.5(green), etc. (8 points)</li>
+</ol>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<ol start="3" style="list-style-type: lower-alpha;">
+<li></li>
+</ol>
+<p>i- Find the covariance between the “GRE.Score” and the “Chance.of.Admit”. (3 points)</p>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<p>ii- Print or plot the correlation matrix of the data and write down the correlations between the GRE.Score, TOEFL.Score, CGPA and the Chance.of.Admit. (3 points)</p>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<p>iii - Interpret the covariance and correlation results obtained from c(i) and c(ii) in terms of the strength and direction of the relationship. (4 points)</p>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<ol start="4" style="list-style-type: lower-alpha;">
+<li>Use ggplot() to plot the graphs to see the relationship between each of three variables (GRE.Score, TOEFL.Score, CGPA) with Chance.of.Admit. (8 points)</li>
+</ol>
+<pre class="r"><code>#Insert your code here.</code></pre>
+</div>
+<div class="section level2">
+<h2>Question 2 (40 points in total)</h2>
+<ol style="list-style-type: lower-alpha;">
+<li></li>
+</ol>
+<p>i- Define the linear regression model between GRE.Score and Chance.of.Admit (3 points)</p>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<p>ii - Plot the regression (least-square) line on the same plot.(3 points)</p>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<p>ii- - Explain the meaning of the slope and y-intercept for the least-squares regression line in Q2(ii). (3 points)</p>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<ol start="2" style="list-style-type: lower-alpha;">
+<li>Print the results of this model and interpret the results by following questions:</li>
+</ol>
+<p>i - What is the number of observations was the regression run on? (3 points)</p>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<p>ii - Interpret the R-squared of this regression? (4 points)</p>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<p>iii - Write the regression equation associated with this regression model? (4 points)</p>
+<ol start="3" style="list-style-type: lower-alpha;">
+<li>Use the regression line to predict the chance of admit when GRE score 310. (10 points)</li>
+</ol>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<ol start="4" style="list-style-type: lower-alpha;">
+<li>From the given Q2(a) linear model between GRE.Score and Chance.of.Admit, what should be GRE score of a student who has 50% of chance of admission?(10 points)</li>
+</ol>
+<pre class="r"><code>#Insert your code here.</code></pre>
+</div>
+<div class="section level2">
+<h2>Question 3 (30 points in total)</h2>
+<ol style="list-style-type: lower-alpha;">
+<li>Use three independent variables (‘GRE.Score’,‘TOEFL.Score’, ‘CGPA’) to build a multiple linear regression model to predict dependent variable ‘Chance.of.Admit’. Display a summary of your model indicating Residuals, Coefficients, etc. Explain the summary results. (8 points)</li>
+</ol>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<ol start="2" style="list-style-type: lower-alpha;">
+<li>Write the regression equation associated with this multiple regression model. (8 points)</li>
+</ol>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<ol start="3" style="list-style-type: lower-alpha;">
+<li>Using this model:</li>
+</ol>
+<p>i- Find the chance of admit for the 3rd student and 23rd students in the dataset. (4 points)</p>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<p>ii- Identify which student (3rd or 23rd) has higher chance than the other and print the difference between the chance of admit of these two students.(3 points)</p>
+<pre class="r"><code>#Insert your code here.</code></pre>
+<ol start="4" style="list-style-type: lower-alpha;">
+<li>Explain the difference between the linear regression models in Question 2 and in Question 3. (7 points)</li>
+</ol>
+<pre class="r"><code>#Insert your code here.</code></pre>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/d2l/common/math/MathML.js?v=20.21.11.33511 "></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() { D2LMathML.DesktopInit('https://s.brightspace.com/lib/mathjax/2.7.4/MathJax.js?config=MML_HTMLorMML','https://s.brightspace.com/lib/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML','130',true); });</script></body></html>
